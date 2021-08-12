@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+
+    <style>
+       /*  .blog{
+            border: 2px solid orange;
+            margin: 5px;
+            padding: 5px;
+            border-radius: 10px;
+        } */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to my blog website</h1>
+    </header>
+
+    <main>
+        <section class="blogs" id="blog-section">
+            <header>
+                <h2>Blogs List</h2>
+                <ul id="blog-list">
+                    <li>Blog- 1</li>
+                    <li>Blog- 2</li>
+                    <li>Blog- 3</li>
+                </ul>
+            </header>
+
+            <article class="blog">
+                <h3>My Awesome Blog-1 </h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor quos ea alias perspiciatis aliquam, quisquam veritatis tenetur ab hic dicta. Amet quasi odit dignissimos accusamus sunt earum facilis iste ut temporibus rem? Quod cumque adipisci officia, omnis maiores voluptas totam nemo optio unde mollitia possimus quo impedit non reiciendis esse obcaecati?</p>
+            </article>
+            <article id="second-blog" class="blog">
+                <h3 id="second-title">My Awesome Blog-2 </h3>
+                <p>Sapiente velit quasi non quod ea libero autem labore. Est cumque earum optio, quia aliquam consectetur quae, numquam inventore, eaque consequuntur dolore. Molestias vero nobis omnis accusamus quis expedita officiis placeat, totam ullam incidunt unde illum, corrupti magnam repellat laborum, deserunt obcaecati hic debitis porro adipisci sapiente eum. Nostrum, iusto quisquam.</p>
+            </article>
+            <article class="blog">
+                <h3>My Awesome Blog-3 </h3>
+                <p>Perferendis excepturi, sapiente debitis quam fuga nostrum, sit enim a quaerat animi libero natus, architecto perspiciatis aliquam laudantium iusto officia harum veniam unde? Alias ut ipsum suscipit vel, nostrum id dicta saepe debitis ullam exercitationem iste provident vitae quos itaque sit placeat consequuntur, labore totam recusandae! Repudiandae aliquid vel unde itaque!</p>
+            </article>
+        </section>
+    </main>
+
+    <script>
+        const student = {name: "aman", age: 11, educaton: "BURP"}
+        // console.log(document.body); 
+        const blogsTitle = document.getElementsByTagName("h3");
+        console.log(blogsTitle);
+
+        for(const h3 of blogsTitle){
+            // console.log(h3.innerText);
+        }
+
+
+        const blogDetail = document.getElementsByTagName("p");
+        console.log(blogDetail);
+
+        for(const p of blogDetail){
+            // console.log(p.innerText );
+        }
+
+        // console.log(document.getElementById("second-title"));
+
+        // get Element by id
+        let mySecondTitle = document.getElementById('second-title');
+        mySecondTitle.style.color = 'salmon';
+        mySecondTitle.style.backgroundColor = 'gray';
+        mySecondTitle.style.fontSize = '51px';
+        mySecondTitle.style.padding = '10px';
+
+        mySecondTitle.innerText = 'We also can change the text :D'
+
+
+       
+
+        // create a list in the existing list
+
+        // step 1: create the element
+        const li = document.createElement('li');
+        li.innerText = 'Newly added Blog-4';
+
+        // step 2: where to add? add an ID to the ul then add there
+        const ul = document.getElementById("blog-list");
+
+        // step 3: Now add the list
+        ul.appendChild(li);
+
+        // NOw lets add a whole blog titled, "Newly Added Blog-4"
+
+        // step 1: create the article
+        const myArticle = document.createElement('article');
+        myArticle.classList.add('blog');
+        // i want a h3 and a p in the article
+        const blog4h3 = document.createElement('h3');
+        blog4h3.innerText = "Newly added Blog-4";
+
+        const blog4p = document.createElement('p');
+        blog4p.innerText = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor quos ea alias perspiciatis aliquam, quisquam veritatis tenetur ab hic dicta. Amet quasi odit dignissimos accusamus sunt earum facilis iste ut temporibus rem? Quod cumque adipisci officia, omnis maiores voluptas totam nemo optio unde mollitia possimus quo impedit non reiciendis esse obcaecati?';
+        // now lets add these h3 and p into my article
+        myArticle.appendChild(blog4h3);
+        myArticle.appendChild(blog4p);
+
+        // step 2: where to add this article
+        const myBlogSection = document.getElementById('blog-section');
+        // const myBlogSection = document.getElementsByClassName('blogs-section-class');
+
+        // step 3: appendChild
+        myBlogSection.appendChild(myArticle);
+
+
+        // lets add another article with diffrent system, caret (``) diye
+
+        const anotherArticle = document.createElement('article');
+        anotherArticle.classList.add('blog');
+
+        anotherArticle.innerHTML = `
+        <h3> caret diye add kora blog </h3>
+        <p>Perferendis excepturi, sapiente debitis quam fuga nostrum, sit enim a quaerat animi libero natus, architecto perspiciatis aliquam laudantium iusto officia harum veniam unde? Alias ut ipsum suscipit vel, nostrum id dicta saepe debitis ullam exercitationem iste provident vitae quos itaque sit placeat consequuntur, labore totam recusandae! Repudiandae aliquid vel unde itaque! </p>
+        `
+        myBlogSection.append(anotherArticle);
+
+         // get elemets by class name
+         const myBlogs = document.getElementsByClassName('blog');
+        for(const blog of myBlogs){
+            console.log(blog);
+
+            blog.style.border = '2px solid orange';
+            blog.style.borderRadius = '10px';
+            blog.style.margin = '10px';
+            blog.style.padding = '10px';
+        }
+    </script>
+</body>
+</html>
